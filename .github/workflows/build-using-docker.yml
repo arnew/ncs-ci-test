@@ -11,6 +11,12 @@ jobs:
     outputs:
       IMAGE_TAG: ${{ steps.set-output.outputs.IMAGE_TAG }}
     steps:
+      - name: get to know myself
+        run: |
+          id
+          whoami
+          ls -lisa /var/run/docker.sock
+          
       - name: Checkout repository with example application
         uses: actions/checkout@v4
         with:
@@ -21,11 +27,7 @@ jobs:
           python3 -m pip install west
           west init -l example-application
           west update -o=--depth=1 -n nrf
-      - name: get to know myself
-        run: |
-          id
-          whoami
-          ls -lisa /var/run/docker.sock
+
           
       - name: Find toolchain bundle id
         id: set-output
