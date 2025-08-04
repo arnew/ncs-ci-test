@@ -17,7 +17,7 @@ jobs:
 
       - name: Prepare west project
         run: |
-          echo %PATH
+          echo $PATH
           python3 -m pip install west
           west init -l example-application
           west update -o=--depth=1 -n nrf
