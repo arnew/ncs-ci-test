@@ -3,7 +3,8 @@ name: Build and test app in toolchain bundle environment
 on:
   pull_request:
   push:
-
+  workflow_dispatch:
+    
 jobs:
   build-and-test-in-toolchain-bundle:
     runs-on: self-hosted

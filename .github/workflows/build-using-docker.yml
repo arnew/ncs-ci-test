@@ -3,6 +3,7 @@ name: Build and test app in NCS docker container
 on:
   pull_request:
   push:
+  workflow_dispatch:
 
 jobs:
   set-image-tag:
