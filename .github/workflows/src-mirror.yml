@@ -24,9 +24,7 @@ concurrency:
   # Tar entire project west workspace, prune, and upload to artifact service.
 jobs:
   standard:
-    runs-on:
-      - runs-on=${{ github.run_id }}
-      - runner=16cpu-linux-x64
+    runs-on: self-hosted
     steps:
       - name: Upload src.tar.gz
         uses: nrfconnect/action-src-mirror@main

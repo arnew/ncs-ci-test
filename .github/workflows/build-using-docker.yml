@@ -6,7 +6,7 @@ on:
 
 jobs:
   set-image-tag:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     outputs:
       IMAGE_TAG: ${{ steps.set-output.outputs.IMAGE_TAG }}
     steps:
@@ -27,7 +27,7 @@ jobs:
 
   build-and-test-in-docker:
     needs: set-image-tag
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     container: ghcr.io/nrfconnect/sdk-nrf-toolchain:${{ needs.set-image-tag.outputs.IMAGE_TAG }}
     defaults:
       run:

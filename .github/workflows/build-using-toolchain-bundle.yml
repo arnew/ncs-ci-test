@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-and-test-in-toolchain-bundle:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     steps:
       - name: Checkout repository with example application
         uses: actions/checkout@v4
