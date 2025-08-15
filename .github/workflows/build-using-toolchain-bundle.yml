@@ -18,7 +18,7 @@ jobs:
 
       - name: Prepare west project
         run: |
-          pipx install west
+          pip install --user -U west
           west init -l example-application
           west update -o=--depth=1 -n
 
