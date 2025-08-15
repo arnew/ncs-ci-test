@@ -25,6 +25,7 @@ jobs:
 
       - name: Build
         run: |
+          pipx ensurepath
           cd doc
           doxygen
 
