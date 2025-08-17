@@ -24,9 +24,14 @@ jobs:
         with:
           path: example-application
 
+      - name: clean workspace
+        run: |
+          git clean -fdx
+
       - name: Prepare west project
         run: |
           pipx install --force west
+          git clean -fdx
           west init -l example-application
           west update -o=--depth=1 -n nrf
 
