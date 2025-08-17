@@ -26,6 +26,7 @@ jobs:
 
       - name: clean workspace
         run: |
+          cd example-application
           git clean -fdx
 
       - name: Prepare west project
