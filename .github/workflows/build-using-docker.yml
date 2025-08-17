@@ -24,15 +24,9 @@ jobs:
         with:
           path: example-application
 
-      - name: clean workspace
-        run: |
-          cd example-application
-          git clean -fdx
-
       - name: Prepare west project
         run: |
           pipx install --force west
-          git clean -fdx
           west init -l example-application
           west update -o=--depth=1 -n nrf
 
@@ -40,6 +34,8 @@ jobs:
       - name: Find toolchain bundle id
         id: set-output
         run: echo "IMAGE_TAG=$(./nrf/scripts/print_toolchain_checksum.sh)" >> $GITHUB_OUTPUT
+      - uses: eviden-actions/clean-self-hosted-runner@v1
+        if: ${{ always() }} # Run even if previous steps in the job fail or are canceled
 
   build-and-test-in-docker:
     needs: set-image-tag
