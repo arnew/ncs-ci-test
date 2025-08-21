@@ -46,7 +46,7 @@ jobs:
       run:
         # Bash shell is needed to set toolchain related environment variables in docker container
         # It is a workaround for GitHub Actions limitation https://github.com/actions/runner/issues/1964
-        shell: bash
+        shell: bash -e {0}
     steps:
       - name: Checkout repository with example application
         uses: actions/checkout@v4
