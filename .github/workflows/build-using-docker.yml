@@ -55,6 +55,14 @@ jobs:
         # It is a workaround for GitHub Actions limitation https://github.com/actions/runner/issues/1964
         shell: /bin/bash -e {0}
     steps:
+      - name: Install Node.js (required by GitHub Actions runtime)
+        run: |
+          apt-get update
+          apt-get install -y nodejs npm
+      - name: Add Node shim for GitHub Actions
+        run: |
+          mkdir -p /__e/node20/bin
+          ln -s /usr/bin/node /__e/node20/bin/node
       - name: Checkout repository with example application
         uses: actions/checkout@v4
         with:
