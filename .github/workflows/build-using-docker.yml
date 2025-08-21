@@ -9,6 +9,8 @@ on:
 
 env:
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+  ACTIONS_RUNNER_FORCE_ACTIONS_NODE_CLEAN: true
+
 
 jobs:
   set-image-tag:
