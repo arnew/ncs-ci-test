@@ -41,12 +41,14 @@ jobs:
   build-and-test-in-docker:
     needs: set-image-tag
     runs-on: self-hosted
-    container: ghcr.io/nrfconnect/sdk-nrf-toolchain:${{ needs.set-image-tag.outputs.IMAGE_TAG }}
+    container:
+      image: ghcr.io/nrfconnect/sdk-nrf-toolchain:${{ needs.set-image-tag.outputs.IMAGE_TAG }}
+      options: --entrypoint /bin/bash
     defaults:
       run:
         # Bash shell is needed to set toolchain related environment variables in docker container
         # It is a workaround for GitHub Actions limitation https://github.com/actions/runner/issues/1964
-        shell: bash -e {0}
+        shell: /bin/bash -e {0}
     steps:
       - name: Checkout repository with example application
         uses: actions/checkout@v4
